@@ -26,6 +26,7 @@
     "build": "tsc -p tsconfig.release.json",
     "build:watch": "tsc -w -p tsconfig.release.json",
     "lint": "tslint -t stylish --project 'tsconfig.json'",
-    "lint:fix": "tslint --fix -t stylish --project 'tsconfig.json'"
+    "lint:fix": "tslint --fix -t stylish --project 'tsconfig.json'",
+    "prepublish": "npm run clean && npm run build"
   }
 }
