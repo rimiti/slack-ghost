@@ -27,6 +27,7 @@ $ export SLACK_GHOST_TOKEN=token
 
 ```
 $ slackghost
+$ [2019-01-02T17:52:41.088Z] - You are connected as "dobairro.dimitri" (RFA1KN75T).
 ```
 
 ## Scripts
