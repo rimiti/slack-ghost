@@ -1,0 +1,12 @@
+{
+  "name": "@rimiti/slack-wake-up",
+  "version": "1.0.0",
+  "description": "Simulate Slack activity to appear as connected.",
+  "main": "dist/index.js",
+  "repository": "git@github.com:rimiti/slack-wake-up.git",
+  "author": "Dimitri DO BAIRRO <dimitri.dobairro@dimsolution.com>",
+  "license": "MIT",
+  "dependencies": {
+    "@slack/client": "^4.8.0"
+  }
+}
