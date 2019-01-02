@@ -21,7 +21,7 @@ $ npm i -g @rimiti/slack-ghost
 2. Create the `SLACK_GHOST_TOKEN`environment variable:
 
 ```bash
-$ export SLACK_GHOST_TOKEN=xoxp-434039121764-434039121764-434039121764-8a44548cfde0eb3028bd3fe1ac6foy5d
+$ export SLACK_GHOST_TOKEN=token
 ```
 3. Enjoy:
 
