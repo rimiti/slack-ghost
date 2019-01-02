@@ -1,3 +1,5 @@
+#!/usr/bin/env node
+
 import { RTMClient } from "@slack/client";
 
 if (!process.env.SLACK_GHOST_TOKEN) {
