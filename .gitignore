@@ -10,3 +10,4 @@ build/
 .npm
 .eslintcache
 .DS_Store
+dist
