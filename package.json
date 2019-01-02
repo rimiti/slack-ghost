@@ -1,5 +1,5 @@
 {
-  "name": "@rimiti/slack-wake-up",
+  "name": "@rimiti/slack-ghost",
   "version": "1.0.0",
   "description": "Simulate Slack activity to appear as connected.",
   "main": "dist/index.js",
@@ -8,5 +8,21 @@
   "license": "MIT",
   "dependencies": {
     "@slack/client": "^4.8.0"
+  },
+  "devDependencies": {
+    "@types/node": "^10",
+    "prettier": "^1.15.3",
+    "rimraf": "^2.6.2",
+    "tslint": "5.12.0",
+    "tslint-config-prettier": "^1.17.0",
+    "tslint-microsoft-contrib": "^6.0.0",
+    "typescript": "^3.2.2"
+  },
+  "scripts": {
+    "clean": "rimraf build tmp",
+    "build": "tsc -p tsconfig.release.json",
+    "build:watch": "tsc -w -p tsconfig.release.json",
+    "lint": "tslint -t stylish --project 'tsconfig.json'",
+    "lint:fix": "tslint --fix -t stylish --project 'tsconfig.json'"
   }
 }
