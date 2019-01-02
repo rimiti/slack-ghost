@@ -16,20 +16,18 @@ let isFirstConnection: boolean = true;
 async function connection() {
   try {
     if(!connected || !rtm.connected) {
-      let data;
       if(!isFirstConnection) {
         await rtm.disconnect();
-        data = await rtm.start();
-      } else {
-        data = await rtm.start();
       }
+      //@ts-ignore
+      const {self} = await rtm.start();
 
-      await rtm.subscribePresence(data.self.id);
+      await rtm.subscribePresence(self.id);
       connected = rtm.connected;
 
       if(isFirstConnection) {
         isFirstConnection = false;
-        console.log(`[${new Date().toISOString()}] - You are connected as "${data.self.name}" (${data.self.id}).`)
+        console.log(`[${new Date().toISOString()}] - You are connected as "${self.name}" (${self.id}).`)
       } else {
         console.log(`[${new Date().toISOString()}] - Your presence has been refreshed.`)
       }
@@ -39,4 +37,4 @@ async function connection() {
   }
 }
 
-setInterval(() => connection(), 5000);
+setInterval(connection, 5000);
