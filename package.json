@@ -6,6 +6,9 @@
   "repository": "git@github.com:rimiti/slack-wake-up.git",
   "author": "Dimitri DO BAIRRO <dimitri.dobairro@dimsolution.com>",
   "license": "MIT",
+  "bin": {
+    "slackghost": "./dist/index.js"
+  },
   "dependencies": {
     "@slack/client": "^4.8.0"
   },
