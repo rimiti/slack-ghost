@@ -42,7 +42,7 @@ async function connection() {
       }
     }
   } catch (e) {
-    console.error("Unable to connect you to the Slack servers.");
+    console.error("Unable to connect you to the Slack servers:", e);
   }
 }
 
