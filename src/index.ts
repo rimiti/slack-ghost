@@ -6,7 +6,7 @@ if (process.env.SLACK_GHOST_TOKEN === undefined) {
   throw new Error(`"SLACK_GHOST_TOKEN" environment variable must be set.`);
 }
 
-const rtm = new RTMClient(process.env.SLACK_GHOST_TOKEN);
+let rtm: RTMClient;
 let data: IStartResponse;
 let isFirstConnection: boolean = true;
 let lastConnection: moment.Moment;
@@ -22,19 +22,20 @@ interface IStartResponse {
 
 /**
  * @description Connect user an simulate activity to appear as connected.
- * The connection is automatically stopped and restart every 28 minutes.
+ * The connection is automatically stopped and restart every 20 minutes.
  */
 async function connection() {
   try {
-    if(!isFirstConnection && moment().diff(lastConnection, "seconds") >= 28) {
+    if(!isFirstConnection && moment().diff(lastConnection, "minutes") >= 20) {
+      rtm = new RTMClient(process.env.SLACK_GHOST_TOKEN);
       lastConnection = moment();
-      await rtm.disconnect();
       // @ts-ignore
       data = await rtm.start();
       console.log(`[${moment().format()}] - Connexion auto restarted.`);
     }
 
     if(isFirstConnection) {
+      rtm = new RTMClient(process.env.SLACK_GHOST_TOKEN);
       isFirstConnection = false;
       lastConnection = moment();
       // @ts-ignore
@@ -47,4 +48,4 @@ async function connection() {
   }
 }
 
-setInterval(connection, 5000);
+setInterval(connection, 6000);
