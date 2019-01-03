@@ -1,6 +1,6 @@
 {
   "name": "@rimiti/slack-ghost",
-  "version": "1.4.0",
+  "version": "1.4.1",
   "description": "Simulate Slack activity to appear as connected.",
   "main": "dist/index.js",
   "repository": "git@github.com:rimiti/slack-wake-up.git",
