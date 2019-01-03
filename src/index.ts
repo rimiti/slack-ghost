@@ -7,7 +7,7 @@ if (process.env.SLACK_GHOST_TOKEN.length === undefined) {
 }
 
 const rtm = new RTMClient(process.env.SLACK_GHOST_TOKEN);
-let connected: boolean = false;
+let data: IStartResponse;
 let isFirstConnection: boolean = true;
 
 /**
@@ -25,24 +25,18 @@ interface IStartResponse {
  */
 async function connection() {
   try {
-    if(!connected || !rtm.connected) {
-      if(!isFirstConnection) {
-        await rtm.disconnect();
-      }
+    if(isFirstConnection) {
       // @ts-ignore
-      const data:IStartResponse = await rtm.start();
-      await rtm.subscribePresence([data.self.id]);
-      connected = rtm.connected;
+      data = await rtm.start();
+    }
+    await rtm.subscribePresence([data.self.id]);
 
-      if(isFirstConnection) {
-        isFirstConnection = false;
-        console.log(`[${new Date().toISOString()}] - You are connected as "${data.self.name}" (${data.self.id}).`)
-      } else {
-        console.log(`[${new Date().toISOString()}] - Your presence has been refreshed.`)
-      }
+    if(isFirstConnection) {
+      isFirstConnection = false;
+      console.log(`[${new Date().toISOString()}] - You are connected as "${data.self.name}" (${data.self.id}).`)
     }
   } catch (e) {
-    console.error("Unable to connect you to the Slack servers:", e);
+    console.error(`[${new Date().toISOString()}] - Unable to connect you to the Slack servers:`, e);
   }
 }
 
