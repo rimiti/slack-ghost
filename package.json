@@ -15,7 +15,7 @@
   "devDependencies": {
     "@types/node": "^10",
     "prettier": "^1.15.3",
-    "rimraf": "^2.6.2",
+    "rimraf": "^2.6.3",
     "tslint": "5.12.0",
     "tslint-config-prettier": "^1.17.0",
     "tslint-microsoft-contrib": "^6.0.0",
