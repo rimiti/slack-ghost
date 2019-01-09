@@ -1,4 +1,4 @@
-# @rimiti/slack-ghost
+# slack-ghost
 
 [![Dependencies][prod-dependencies-badge]][prod-dependencies]
 [![MIT License][license-badge]][LICENSE]
