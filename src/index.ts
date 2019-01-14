@@ -2,14 +2,22 @@
 import { RTMClient } from "@slack/client";
 import * as moment from "moment";
 
-if (process.env.SLACK_GHOST_TOKEN === undefined) {
-  throw new Error(`"SLACK_GHOST_TOKEN" environment variable must be set.`);
+if (process.env.SLACK_GHOST_TOKEN === undefined && process.argv[2] === undefined) {
+  throw new Error(`Token argument or "SLACK_GHOST_TOKEN" environment variable must be set.`);
 }
 
 let rtm: RTMClient;
 let data: IStartResponse;
 let isFirstConnection: boolean = true;
 let lastConnection: moment.Moment;
+let token: string;
+
+if(process.env.SLACK_GHOST_TOKEN !== undefined) {
+  token = process.env.SLACK_GHOST_TOKEN;
+} else {
+  token = process.argv[2];
+}
+
 /**
  * @description IStartResponse interface.
  */
@@ -27,7 +35,7 @@ interface IStartResponse {
 async function connection() {
   try {
     if(!isFirstConnection && moment().diff(lastConnection, "minutes") >= 20) {
-      rtm = new RTMClient(process.env.SLACK_GHOST_TOKEN);
+      rtm = new RTMClient(token);
       lastConnection = moment();
       // @ts-ignore
       data = await rtm.start();
@@ -35,7 +43,7 @@ async function connection() {
     }
 
     if(isFirstConnection) {
-      rtm = new RTMClient(process.env.SLACK_GHOST_TOKEN);
+      rtm = new RTMClient(token);
       isFirstConnection = false;
       lastConnection = moment();
       // @ts-ignore
@@ -48,4 +56,6 @@ async function connection() {
   }
 }
 
-setInterval(connection, 6000);
+connection()
+  .then(() => setInterval(connection, 30000))
+  .catch((e: Error) => console.error(`[${moment().format()}] - Unable to launch slackghost:`, e));
