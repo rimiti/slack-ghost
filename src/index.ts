@@ -52,7 +52,7 @@ async function connection() {
     }
     await rtm.subscribePresence([data.self.id]);
   } catch (e) {
-    console.error(`[${moment().format()}] - Unable to connect you to the Slack tt servers:`, e);
+    console.error(`[${moment().format()}] - Unable to connect you to the Slack servers:`, e);
   }
 }
 
