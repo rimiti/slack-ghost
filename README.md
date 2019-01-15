@@ -17,16 +17,29 @@ $ npm i -g @rimiti/slack-ghost
 
 ## How to use it?
 
-1. Go to the [Slack Legacy Token](https://api.slack.com/custom-integrations/legacy-tokens) page and click to *Create token*.
-2. Create the `SLACK_GHOST_TOKEN`environment variable:
+Before everything, you have to go to the [Slack Legacy Token](https://api.slack.com/custom-integrations/legacy-tokens) page and click to *Create token* 
+to generate your token.
+
+### With an environment variable (recommended)
+
+1 Create the `SLACK_GHOST_TOKEN`environment variable:
 
 ```bash
 $ export SLACK_GHOST_TOKEN=token
 ```
-3. Enjoy:
+2. Enjoy:
 
 ```
 $ slackghost
+$ [2019-01-02T17:52:41.088Z] - You are connected as "dobairro.dimitri" (RFA1KN75T).
+```
+
+### With a CLI argument
+
+1. Enjoy:
+
+```
+$ slackghost xoxp-434098521764-517538955265-514963434770-84ea548c6tf0e7yb3028bd3fac6ff62d
 $ [2019-01-02T17:52:41.088Z] - You are connected as "dobairro.dimitri" (RFA1KN75T).
 ```
 
