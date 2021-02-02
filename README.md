@@ -1,6 +1,7 @@
 # slack-ghost
 
 [![Dependencies][prod-dependencies-badge]][prod-dependencies]
+[![Build][build-badge]][build]
 [![MIT License][license-badge]][LICENSE]
 [![PRs Welcome][prs-badge]][prs]
 
@@ -59,6 +60,8 @@ MIT © [Dimitri DO BAIRRO](https://github.com/rimiti/slack-ghost/blob/master/LIC
 
 [prod-dependencies-badge]: https://david-dm.org/rimiti/slack-ghost/status.svg
 [prod-dependencies]: https://david-dm.org/rimiti/slack-ghost
+[build-badge]: https://github.com/semantic-release/semantic-release/workflows/Test/badge.svg
+[build]: https://github.com/semantic-release/semantic-release/actions?query=workflow%3ATest+branch%3Amaster
 [license-badge]: https://img.shields.io/badge/license-MIT-blue.svg?style=flat-square
 [license]: https://github.com/rimiti/slack-ghost/blob/master/LICENSE
 [prs-badge]: https://img.shields.io/badge/PRs-welcome-brightgreen.svg?style=flat-square
