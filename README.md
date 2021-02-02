@@ -23,7 +23,7 @@ to generate your token.
 
 ### With an environment variable (recommended)
 
-1 Create the `SLACK_GHOST_TOKEN`environment variable:
+1 Create the `SLACK_GHOST_TOKEN` environment variable:
 
 ```bash
 $ export SLACK_GHOST_TOKEN=token
